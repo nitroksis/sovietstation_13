@@ -1,0 +1,37 @@
+<div style="min-width: 480px">
+	<h3>Hydroponics Environment Controller:</h3>
+	{{:~link('Re-link', 'refresh', {"action": "relink"})}}
+	<div class = "item">
+		<div class="itemLabel">
+			Temperature:
+		</div>
+		{{:~displayBar(temperature, 173.0, 373.0, 'good')}}
+		<div class="itemContent" style="width: 60px">	
+			{{:~round(temperature*10)/10}}°K
+		</div>
+	</div>
+	<div class = "item">
+		<div class="itemContent">
+		{{:~link('', 'circle-arrow-w', {"action": "temperature","sign": "minus", "amount": 3})}}
+		{{:~link('', 'circle-triangle-w', {"action": "temperature","sign": "minus", "amount": 2})}}
+		{{:~link('', 'circle-minus', {"action": "temperature","sign": "minus", "amount": 1})}}
+		{{:~link('', 'circle-plus', {"action": "temperature","sign": "plus", "amount": 1})}}
+		{{:~link('', 'circle-triangle-e', {"action": "temperature","sign": "plus", "amount": 2})}}
+		{{:~link('', 'circle-arrow-e', {"action": "temperature","sign": "plus", "amount": 3})}}
+		</div>
+	</div>
+	<br>
+	<h3>Linked Trays:</h3>
+
+	{{for linked_trays}}
+	<div class = "item">
+		<div class="itemLabel">
+			Temperature:
+		</div>
+		{{:~displayBar(l_temperature, 173.0, 373.0, 'good')}}
+		<div class="itemContent" style="width: 60px">	
+			{{:~round(l_temperature*10)/10}}°K
+		</div>
+	</div>
+	{{/for}}
+</div>
