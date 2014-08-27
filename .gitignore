@@ -3,6 +3,7 @@
 *.int
 *.lk
 *.zip
+log.txt
 data/
 config/admins.txt
 config/admin_ranks.txt
