@@ -1,0 +1,8 @@
+*.dmb
+*.rsc
+*.int
+*.lk
+*.zip
+data/
+config/admins.txt
+config/admin_ranks.txt
