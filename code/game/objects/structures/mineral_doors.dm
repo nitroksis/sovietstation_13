@@ -28,8 +28,8 @@
 			icon_state = "door_key"
 			return
 
-/obj/item/picklock
-	name = "picklock"
+/obj/item/lockpick
+	name = "lockpick"
 	desc = "Opens some door."
 	icon = 'icons/obj/vehicles.dmi' //Fuck you Harvester!11
 	icon_state = "keys"
@@ -149,9 +149,9 @@
 			else
 				user << "You cannot open [src.name] with [W.name]"
 				return
-		if((istype(W, /obj/item/picklock))&&(!src.state)&&(!src.isSwitchingStates))
+		if((istype(W, /obj/item/lockpick))&&(!src.state)&&(!src.isSwitchingStates))
 			if (src.hasLock)
-				pickingUp(user)
+				pickingUp(user, W)
 			else
 				user << "What are you trying to hack?"
 				return
@@ -169,7 +169,7 @@
 			attack_hand(user)
 		return
 
-	proc/pickingUp(var/user)
+	proc/pickingUp(var/user, var/lockpick)
 		if (!isHacking)
 			isHacking = 1
 			hackingStage = 0
@@ -183,7 +183,9 @@
 				locked = 0
 				return
 			if (prob(30))
-				user << "Picklock has broken."
+				user << "lockpick has broken."
+				user.drop_item()
+				del(lockpick)
 				isHacking = 0
 				return
 			user << "Try one more time!"

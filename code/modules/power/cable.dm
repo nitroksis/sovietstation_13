@@ -281,6 +281,23 @@
 		usr << "<span class='notice'>\blue You cannot do that.</span>"
 	..()
 
+/obj/item/weapon/cable_coil/verb/make_lockpick()
+	set name = "Make Lockpick"
+	set category = "Object"
+	var/mob/M = usr
+	if(ishuman(M) && !M.restrained() && !M.stat && !M.paralysis && ! M.stunned)
+		if(!istype(usr.loc,/turf)) return
+		var/obj/item/weapon/wirecutters/W = M.get_active_hand()
+		if (W && istype(W))
+			var/obj/item/lockpick/B = new /obj/item/lockpick(usr.loc)
+			usr << "<span class='notice'>You have removed insulation from part of the cable and made it a lockpick.</span>"
+			src.use(1)
+		else
+			usr << "<span class='notice'>\blue You need a wirecutter in your hand.</span>"
+	else
+		usr << "<span class='notice'>\blue You cannot do that.</span>"
+	..()
+
 /obj/item/weapon/cable_coil/attackby(obj/item/weapon/W, mob/user)
 	..()
 	if( istype(W, /obj/item/weapon/wirecutters) && src.amount > 1)
