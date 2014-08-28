@@ -289,7 +289,7 @@
 		if(!istype(usr.loc,/turf)) return
 		var/obj/item/weapon/wirecutters/W = M.get_active_hand()
 		if (W && istype(W))
-			var/obj/item/lockpick/B = new /obj/item/lockpick(usr.loc)
+			new/obj/item/lockpick(usr.loc)
 			usr << "<span class='notice'>You have removed insulation from part of the cable and made it a lockpick.</span>"
 			src.use(1)
 		else
