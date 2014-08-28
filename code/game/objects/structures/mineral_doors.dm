@@ -169,26 +169,26 @@
 			attack_hand(user)
 		return
 
-	proc/pickingUp(var/user, var/lockpick)
+	proc/pickingUp(var/mob/usr, var/lockpick)
 		if (!isHacking)
 			isHacking = 1
 			hackingStage = 0
-		user << "Attempting to pick up the lock!"
-		if(do_after(user, 100))
+		usr << "Attempting to pick up the lock!"
+		if(do_after(usr, 100))
 			if(!src) return
 			hackingStage += 1
 			if (prob(hackingStage))
-				user << "You have successfully picked up [src.name]!"
+				usr << "You have successfully picked up [src.name]!"
 				isHacking = 0
 				locked = 0
 				return
 			if (prob(30))
-				user << "lockpick has broken."
-				user.drop_item()
+				usr << "lockpick has broken."
+				usr.drop_item()
 				del(lockpick)
 				isHacking = 0
 				return
-			user << "Try one more time!"
+			usr << "Try one more time!"
 
 
 	proc/CheckHardness()
